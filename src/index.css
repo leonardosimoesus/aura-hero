@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #08090B;
+  --color-graphite: #171A1F;
+  --color-titanium: #A8AFB8;
+  --color-bone: #F2F2EF;
+  --color-ice: #8BAFC5;
+  --font-display: 'Archivo', 'Arial Narrow', sans-serif;
+  --font-sans: 'Geist', system-ui, sans-serif;
+}
+
+html { background: var(--color-ink); scroll-behavior: smooth; }
+body { margin: 0; font-family: var(--font-sans); color: var(--color-bone); -webkit-font-smoothing: antialiased; }
+.font-display { font-stretch: 118%; }
+:focus-visible { outline: 2px solid var(--color-ice); outline-offset: 3px; border-radius: 4px; }
+summary { list-style: none; } summary::-webkit-details-marker { display: none; }
+
+/* One orchestrated moment: the headline settles in as the studio lights come up. */
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes cue { 0%,100% { transform: scaleY(.35); opacity: .4; } 50% { transform: scaleY(1); opacity: 1; } }
+.hero-title { animation: rise 1.4s cubic-bezier(.2,.7,.2,1) both; }
+.cue { transform-origin: top; animation: cue 2.4s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero-title { animation: none; }
+  .cue { animation: none; }
+  * { transition-duration: .01ms !important; }
+}
